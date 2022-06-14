@@ -11,8 +11,8 @@ class UserInfoAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductsAdmin(admin.ModelAdmin):
-    list_display = ('name', 'category_id', 'price')
-    sortable_by = ['category', '-price']
+    list_display = ('name', 'price')
+    sortable_by = ['-price']
 
 
 @admin.register(Activity)

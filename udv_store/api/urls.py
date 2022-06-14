@@ -7,12 +7,11 @@ from .views import get_user_info, get_activities, create_request, BalanceAPIView
     get_balance_history, \
     create_user, create_user_by_table, get_moderator_list, manage_moderator
 from .store_views import get_user_orders_latest, get_user_orders_full, create_order, \
-    get_category, manage_category, create_category, \
     get_products_to_admin, create_product, manage_product, \
     get_items_list_to_admin, manage_item, create_item, \
     get_products_to_store, get_items_to_product_page, \
     get_orders_to_admin, get_order_to_admin_by_pk, manage_order, \
-    get_cart, manage_cart, test_f
+    get_cart, manage_cart
 from .views import MyTokenObtainPairView
 
 from .views import TableUploadAPI, create_users_by_table
@@ -51,7 +50,7 @@ urlpatterns = [
     path("store/cart/items/<str:pk>/", manage_cart, name="manage-cart-item-by-index"),
 
     # Creating service objects by admin user
-    path("admin/create/category/", create_category, name="create-category"),
+    # path("admin/create/category/", create_category, name="create-category"),
     path("admin/create/product/", create_product, name="create-product"),
     path("admin/create/item/", create_item, name="create-item"),
     path("admin/create/user/", create_user, name="create-user"),
@@ -59,10 +58,10 @@ urlpatterns = [
     path("admin/create/user_by_file/accept/", create_users_by_table),
 
     # Work with service objects by admin user
-    path("admin/categories/", get_category, name="get-category"),
-    path("admin/categories/<str:category_name>/", manage_category, name="manage-category"),
+    # path("admin/categories/", get_category, name="get-category"),
+    # path("admin/categories/<str:category_name>/", manage_category, name="manage-category"),
 
-    path("admin/categories/<str:category_name>/products/",
+    path("admin/products/",
          get_products_to_admin, name="get-products-admin"),
     path("admin/products/<str:pk>/", manage_product, name="manage-product"),
     path("admin/products/<str:pk>/items/",

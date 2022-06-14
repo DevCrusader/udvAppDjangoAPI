@@ -2,3 +2,6 @@
 /udv_store/frontend/
 /udv_store/storage
 /udv_store/udv_store/settings.py
+/udv_store/db.sqlite3
+/udv_store/media/images/
+/udv_store/media/tables/

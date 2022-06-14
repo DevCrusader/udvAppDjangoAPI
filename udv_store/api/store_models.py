@@ -6,46 +6,46 @@ from django.db.models import Q
 from rest_framework.parsers import JSONParser
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=100, null=False, blank=False)
-
-    class StateChoice(models.TextChoices):
-        archived = "Archived"
-        actual = "Actual"
-
-    state = models.CharField(max_length=50, choices=StateChoice.choices, default=StateChoice.actual, db_index=True)
-
-    class Meta:
-        ordering = ["state", "name"]
-        verbose_name = "Категория"
-        verbose_name_plural = "Категории"
-
-    def __str__(self):
-        return self.name
-
-    def change_state(self, new_state: str):
-        self.state = new_state
-        self.save()
-
-    def change_name(self, new_name: str):
-        self.name = new_name
-        self.save()
+# class Category(models.Model):
+#     name = models.CharField(max_length=100, null=False, blank=False)
+#
+#     class StateChoice(models.TextChoices):
+#         archived = "Archived"
+#         actual = "Actual"
+#
+#     state = models.CharField(max_length=50, choices=StateChoice.choices, default=StateChoice.actual, db_index=True)
+#
+#     class Meta:
+#         ordering = ["state", "name"]
+#         verbose_name = "Категория"
+#         verbose_name_plural = "Категории"
+#
+#     def __str__(self):
+#         return self.name
+#
+#     def change_state(self, new_state: str):
+#         self.state = new_state
+#         self.save()
+#
+#     def change_name(self, new_name: str):
+#         self.name = new_name
+#         self.save()
 
 
 class Product(models.Model):
     product_id = models.BigAutoField(primary_key=True)
-    category_id = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
+    # category_id = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=25, null=False, blank=False)
     price = models.PositiveSmallIntegerField()
     description = models.CharField(max_length=400)
-    default_photo = models.ImageField(upload_to="defaultProductPhotos/")
+    default_photo = models.ImageField(upload_to="images/defaultProductPhotos/")
     created_date = models.DateTimeField(auto_now_add=True)
 
     class StateChoice(models.TextChoices):
         archived = "Archived"
         actual = "Actual"
 
-    state = models.CharField(max_length=50, choices=StateChoice.choices, default=StateChoice.actual, db_index=True)
+    state = models.CharField(max_length=50, choices=StateChoice.choices, default=StateChoice.archived, db_index=True)
 
     class Meta:
         verbose_name = "Продукт"
@@ -64,7 +64,7 @@ class Product(models.Model):
         return "Changed"
 
     def change_product_params(self, data):
-        self.category_id = data["new_category"] if data.get("new_category") else self.category_id
+        # self.category_id = data["new_category"] if data.get("new_category") else self.category_id
         self.name = data["new_name"] if data.get("new_name") else self.name
         self.description = data["new_description"] if data.get("new_description") else self.description
         self.default_photo = data["new_photo"] if data.get("new_photo") else self.default_photo
@@ -74,7 +74,7 @@ class Product(models.Model):
     def get_info_to_store(self):
         return {
             "product_id": self.product_id,
-            "product_category": self.category_id.id,
+            # "product_category": self.category_id.id,
             "product_name": self.name,
             "product_price": self.price,
             "product_photo": '/'.join(self.default_photo.path.split("/")[-2:])
@@ -87,7 +87,8 @@ class Product(models.Model):
             "product_photo": '/'.join(self.default_photo.path.split("/")[-2:]),
             "product_state": self.state,
             "product_description": self.description,
-            "product_price": self.price
+            "product_price": self.price,
+            "product_item_count": sum([pi.sizes.count() for pi in self.productitem_set.all()])
         }
 
     def get_info_to_items_list(self):
@@ -131,7 +132,7 @@ class Size(models.Model):
 class ProductItem(models.Model):
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
     color = models.CharField(max_length=30, default="black", null=False, blank=False, db_index=True)
-    photo = models.ImageField(upload_to="productItemPhotos/")
+    photo = models.ImageField(upload_to="images/productItemPhotos/")
     sizes = models.ManyToManyField(Size)
     # archived_sizes = models.CharField(max_length=50, default="", null=False)
 
@@ -219,7 +220,7 @@ class Cart(models.Model):
             "price": self.product_item_id.product_id.price,
             "color": self.product_item_id.color,
             "size": self.size_id.size,
-            "photo": self.product_item_id.photo,
+            "photo": self.product_item_id.get_photo_path(),
             "count": self.count
         }
 
