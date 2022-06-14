@@ -1,4 +1,4 @@
-import io
+import io, os
 
 from django.db.models import Q, Count
 from rest_framework.decorators import api_view, permission_classes, renderer_classes, parser_classes
@@ -8,8 +8,8 @@ from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
 
 from .models import BalanceHistory
-from .store_models import Product, ProductItem, Category, Size, Cart, Order
-from .serializer import OrderListSerializer, ProductsSerializer, CategorySerializer, CustomOrdersSerializer, \
+from .store_models import Product, ProductItem, Size, Cart, Order
+from .serializer import OrderListSerializer, ProductsSerializer, CustomOrdersSerializer, \
     OrderSerializer, ProductItemSerializer
 
 
@@ -29,59 +29,58 @@ def get_user_orders_full(request):
     ])
 
 
-@api_view(["GET"])
-@renderer_classes([JSONRenderer])
-def get_category(request):
-    categories = Category.objects.all()
-
-    return Response({
-        "categories": CategorySerializer(categories, many=True).data,
-        "actual_count": categories.filter(state="Actual").count()
-    })
-
-
-@api_view(["POST", "DELETE"])
-def manage_category(request, category_name):
-    category = Category.objects.get(name=category_name)
-
-    if request.method == "POST":
-        data = request.data
-        if data.get("change_state"):
-            category.change_state(data["change_state"])
-        if data.get("new_name"):
-            category.change_name(data["new_name"])
-
-    if request.method == "DELETE":
-        category.delete()
-
-    return Response({"message": "Successfully!"})
-
-
-@api_view(["POST"])
-def create_category(request):
-    serializer = CategorySerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-    return Response(serializer.data)
+# @api_view(["GET"])
+# @renderer_classes([JSONRenderer])
+# def get_category(request):
+#     categories = Category.objects.all()
+#
+#     return Response({
+#         "categories": CategorySerializer(categories, many=True).data,
+#         "actual_count": categories.filter(state="Actual").count()
+#     })
+#
+#
+# @api_view(["POST", "DELETE"])
+# def manage_category(request, category_name):
+#     category = Category.objects.get(name=category_name)
+#
+#     if request.method == "POST":
+#         data = request.data
+#         if data.get("change_state"):
+#             category.change_state(data["change_state"])
+#         if data.get("new_name"):
+#             category.change_name(data["new_name"])
+#
+#     if request.method == "DELETE":
+#         category.delete()
+#
+#     return Response({"message": "Successfully!"})
+#
+#
+# @api_view(["POST"])
+# def create_category(request):
+#     serializer = CategorySerializer(data=request.data)
+#     if serializer.is_valid():
+#         serializer.save()
+#     return Response(serializer.data)
 
 
 @api_view(["GET"])
 def get_products_to_store(request):
-    products = Product.objects.annotate(items_count=Count("productitem"), item_sizes_count=Count("productitem__sizes"))\
-        .filter(Q(category_id__state="Actual") & Q(state="Actual") & Q(items_count__gt=0) & Q(item_sizes_count__gt=0))
+    products = Product.objects.annotate(
+        items_count=Count("productitem"), item_sizes_count=Count("productitem__sizes"))\
+        .filter(Q(items_count__gt=0) & Q(item_sizes_count__gt=0) & Q(state="Actual"))
 
     return Response([product.get_info_to_store() for product in products])
 
 
 @api_view(["GET"])
-def get_products_to_admin(request, category_name):
-    category = Category.objects.get(name=category_name)
-    products = Product.objects.filter(category_id=category)
+def get_products_to_admin(request):
+    products = Product.objects.all()
     return Response({
         # "category_name": category_name,
         # "category_id": category.id,
-        "actual_count": products.count(),
-        "products_list": [
+        "product_list": [
             product.get_info_to_product_list() for product in products
         ]
     })
@@ -91,9 +90,8 @@ def get_products_to_admin(request, category_name):
 @parser_classes([MultiPartParser, FormParser])
 def create_product(request):
     data = request.data
-    data["category_id"] = Category.objects.get(name=data["category_name"]).id
+    # data["category_id"] = Category.objects.get(name=data["category_name"]).id
     serializer = ProductsSerializer(data=data, many=False)
-    # a = serializer.is_valid()
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data)
@@ -111,6 +109,7 @@ def manage_product(request, pk):
             product.change_product_params(data)
 
     if request.method == "DELETE":
+        product.default_photo.delete(save=True)
         product.delete()
 
     return Response({"message": "Successfully!"})
@@ -134,7 +133,6 @@ def get_items_list_to_admin(request, pk):
 @api_view(["POST"])
 @parser_classes([MultiPartParser, FormParser])
 def create_item(request):
-    # serializer = ProductItemSerializer(data=request.data, many=False)
     data = request.data
 
     pi = ProductItem.objects.create(
@@ -143,10 +141,9 @@ def create_item(request):
         photo=data["photo"]
     )
 
-    if not data["set_size"]:
+    if data["set_size"] == "false":
         pi.sizes.add(Size.objects.get(size="No size"))
-    # if serializer.is_valid():
-    #     serializer.save()
+
     return Response(ProductItemSerializer(pi).data)
 
 
@@ -164,6 +161,7 @@ def manage_item(request, pk):
                 pi.remove_size(data["size"])
 
     if request.method == "DELETE":
+        pi.photo.delete(save=True)
         pi.delete()
 
     return Response({"message": "Successfully!"})

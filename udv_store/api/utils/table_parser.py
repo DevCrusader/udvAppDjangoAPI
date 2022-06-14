@@ -23,8 +23,8 @@ def generate_username(*args):
     return username
 
 
-def parse_data_from_file(table_file, request: dict, excel: bool, csv: bool):
-    if not excel and not csv:
+def parse_data_from_file(table_file, request: dict, csv: bool):
+    if not csv:
         return "Загруженный файл имеет неправильный формат"
 
     cols = []
@@ -54,11 +54,10 @@ def parse_data_from_file(table_file, request: dict, excel: bool, csv: bool):
     if request["table_have_balance"]:
         cols.append(request["balance_column_name"])
 
-    df = pd.DataFrame()
-    if excel:
-        df = pd.read_excel(table_file, usecols=cols)
-    if csv:
-        df = pd.read_csv(table_file, usecols=cols)
+    # df = pd.DataFrame()
+    # if excel:
+    #     df = pd.read_excel(table_file, usecols=cols, engine='openpyxl')
+    df = pd.read_csv(table_file, usecols=cols, encoding='utf-8')
 
     first_col_name = cols[0]
 

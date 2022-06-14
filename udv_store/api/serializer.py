@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from rest_framework.renderers import JSONRenderer
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from .models import UserInfo, Activity, UcoinRequest, Present, BalanceHistory
-from .store_models import ProductItem, Product, Order, Category
+from .store_models import ProductItem, Product, Order
 
 
 # Add to jwt role field
@@ -58,11 +58,11 @@ class UcoinRequestListSerializer(serializers.ModelSerializer):
         fields = ("request_id", "state", "created_date")
 
 
-# Store models Serializers
-class CategorySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Category
-        fields = "__all__"
+# # Store models Serializers
+# class CategorySerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Category
+#         fields = "__all__"
 
 
 # Serializer to create new product

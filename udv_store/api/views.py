@@ -102,6 +102,7 @@ def process_request(request, pk):
 
 
 @api_view(["GET"])
+@permission_classes([IsAuthenticated])
 def search_user(request, search_request):
     split_request = search_request.title().split(' ')
     request_length = len(split_request)
@@ -112,7 +113,10 @@ def search_user(request, search_request):
             Q(userinfo__last_name__startswith=search_request)
         )[:3]
         if users.exists():
-            return Response(PublicUserInfoSerializer([user.userinfo for user in users], many=True).data)
+            return Response(
+                PublicUserInfoSerializer([user.userinfo for user in users if user != request.user], many=True).data
+            )
+
     if request_length == 2:
         split_request = [*(map(lambda x: x[:6], split_request))]
 
@@ -124,7 +128,10 @@ def search_user(request, search_request):
 
         users = User.objects.filter(q1 | q2)
         if users.exists():
-            return Response(PublicUserInfoSerializer([user.userinfo for user in users], many=True).data)
+            return Response(
+                PublicUserInfoSerializer([user.userinfo for user in users if user != request.user], many=True).data
+            )
+
     if request_length > 2:
         return Response({"message": "Too many params, the username consist only of the first name and last name!"})
 
@@ -284,11 +291,12 @@ class TableUploadAPI(APIView):
 
         name = request.data["table_name"]
         table_format = name.rsplit(".")[-1]
-        # table_settings = request.data["table_settings"]
 
-        response = parse_data_from_file(request.data["table"], loads(request.data["table_settings"]),
-                                        table_format == "xlsx", table_format == "csv")
+        response = parse_data_from_file(
+            request.data["table"], loads(request.data["table_settings"]), table_format == "csv"
+        )
 
         if type(response) == str:
             return Response({"error_message": response})
         return Response(response)
+        # return Response('here!')
