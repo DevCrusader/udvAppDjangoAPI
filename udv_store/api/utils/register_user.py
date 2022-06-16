@@ -8,7 +8,6 @@ import os
 def register_users(delete_users: list, temp_table: str):
     cols = ["last_name", "first_name", "patronymic", "balance", "generated_username"]
     df = pd.read_csv("media/tables/" + temp_table, usecols=cols)
-    # df = pd.read_csv("../../storage/tables/" + temp_table, usecols=cols)
     df = df[~df["generated_username"].isin(delete_users)]
     user_info = df.to_dict()
 

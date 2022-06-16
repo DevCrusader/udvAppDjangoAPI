@@ -1,11 +1,12 @@
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenRefreshView
-from .views import get_user_info, get_activities, create_request, BalanceAPIView, \
+from .views import get_user_info, create_request, BalanceAPIView, \
     get_requests, process_request, search_user, get_user_requests_full, get_user_requests_latest, \
     get_unread_present_count, get_unread_present_list, \
     get_present_list, create_present, manage_present_by_pk, \
     get_balance_history, \
-    create_user, create_user_by_table, get_moderator_list, manage_moderator
+    create_user, create_user_by_table, get_moderator_list, manage_moderator, \
+    get_activities, manage_activities_admin, manage_activity_by_pk
 from .store_views import get_user_orders_latest, get_user_orders_full, create_order, \
     get_products_to_admin, create_product, manage_product, \
     get_items_list_to_admin, manage_item, create_item, \
@@ -67,6 +68,9 @@ urlpatterns = [
     path("admin/products/<str:pk>/items/",
          get_items_list_to_admin, name="get-product-items"),
     path("admin/items/<str:pk>/", manage_item, name="manage-item"),
+
+    path("admin/activities/", manage_activities_admin),
+    path("admin/activities/<str:pk>/", manage_activity_by_pk),
 
     path("admin/orders/", get_orders_to_admin, name="get-orders"),
     path("admin/orders/<str:pk>/", get_order_to_admin_by_pk, name="get-order-by-pk"),
