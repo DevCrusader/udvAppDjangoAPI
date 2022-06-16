@@ -13,7 +13,8 @@ from django.contrib.auth.models import User
 from .serializer import UserInfoSerializer, MyTokenObtainPairSerializer, PublicUserInfoSerializer, \
     ActivityListSerializer, UcoinRequestSerializer, ProductsSerializer, OrderSerializer, \
     UcoinRequestListSerializer, OrderListSerializer, PresentSerializer, \
-    CustomOrdersSerializer, CustomUcoinsRequestsSerializer, BalanceHistorySerializer
+    CustomOrdersSerializer, CustomUcoinsRequestsSerializer, BalanceHistorySerializer, \
+    ActivitySerializer
 
 
 class MyTokenObtainPairView(TokenObtainPairView):
@@ -48,9 +49,38 @@ def get_user_requests_full(request):
 
 @api_view(["GET"])
 def get_activities(request):
-    activities = Activity.objects.all()
-    serializer = ActivityListSerializer(activities, many=True)
-    return Response(serializer.data)
+    return Response(ActivityListSerializer(Activity.objects.all(), many=True).data)
+
+
+@api_view(["GET", 'POST'])
+def manage_activities_admin(request):
+    if request.method == "GET":
+        activities = Activity.objects.all()
+        serializer = ActivitySerializer(activities, many=True)
+        return Response(serializer.data)
+
+    if request.method == 'POST':
+        serializer = ActivitySerializer(data=request.data, many=False)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
+
+
+@api_view(["GET", "POST", "DELETE"])
+def manage_activity_by_pk(request, pk):
+    activity = Activity.objects.get(activity_id=pk)
+
+    if request.method == "GET":
+        return Response(ActivitySerializer(activity, many=False).data)
+
+    if request.method == "POST":
+        pass
+
+    if request.method == "DELETE":
+        activity.delete()
+        return Response(status=200)
 
 
 @api_view(["POST"])

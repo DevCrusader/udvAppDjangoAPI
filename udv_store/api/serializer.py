@@ -24,6 +24,12 @@ class UserInfoSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class ActivitySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Activity
+        fields = "__all__"
+
+
 # User info in search
 class PublicUserInfoSerializer(serializers.ModelSerializer):
     class Meta:
@@ -34,7 +40,7 @@ class PublicUserInfoSerializer(serializers.ModelSerializer):
 class ActivityListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Activity
-        fields = ['activity_id', 'name']
+        fields = ['activity_id', 'ucoins_count', 'name']
 
 
 # Serializer to create new request or request page
