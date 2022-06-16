@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="37471f95-e1d6-48f4-8e85-01af7dbb0182" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/udv_store/api/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/api/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/udv_store/api/serializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/api/serializer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/udv_store/api/store_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/api/store_models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/udv_store/api/store_views.py" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/api/store_views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/udv_store/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/api/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/udv_store/api/utils/table_parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/api/utils/table_parser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/udv_store/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/api/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/udv_store/udv_store/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/udv_store/urls.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="TypeScript File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="27ug6hXwITFXd0l58iEhhUnDT0t" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+<<<<<<< Updated upstream
+    &quot;last_opened_file_path&quot;: &quot;/home/artyom/myProjects/pythonProjects/Udv/udv_store/media/images&quo
+    &quot;last_opened_file_path&quot;: &quot;/home/artyom/myProjects/pythonProjects/Udv&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/snap/pycharm-professional/280/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/udv_store/media/images" />
+      <recent name="$PROJECT_DIR$/udv_store/storage/tables" />
+      <recent name="$PROJECT_DIR$/udv_store/api/utils" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/udv_store/media/tables" />
+      <recent name="$PROJECT_DIR$/udv_store/media/images" />
+      <recent name="$PROJECT_DIR$/../../reactProjects" />
+      <recent name="$PROJECT_DIR$/udv_store/storage/images/defaultProductPhotos" />
+      <recent name="$PROJECT_DIR$/udv_store/frontend/src/static" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.register_user">
+    <configuration name="register_user" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Udv" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/udv_store/api/utils" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/udv_store/api/utils/register_user.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="table_parser" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Udv" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/udv_store/api/utils" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/udv_store/api/utils/table_parser.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.register_user" />
+        <item itemvalue="Python.table_parser" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="37471f95-e1d6-48f4-8e85-01af7dbb0182" name="Changes" comment="" />
+      <created>1650175211479</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1650175211479</updated>
+      <workItem from="1650175212891" duration="23000" />
+      <workItem from="1650438121993" duration="1511000" />
+      <workItem from="1650876144654" duration="20276000" />
+      <workItem from="1650950377760" duration="11804000" />
+      <workItem from="1651001989065" duration="5126000" />
+      <workItem from="1651048795831" duration="26226000" />
+      <workItem from="1651113295600" duration="10710000" />
+      <workItem from="1651250469419" duration="126000" />
+      <workItem from="1651958828463" duration="439000" />
+      <workItem from="1651988973656" duration="898000" />
+      <workItem from="1651998784464" duration="3463000" />
+      <workItem from="1652031618897" duration="6007000" />
+      <workItem from="1652127552777" duration="967000" />
+      <workItem from="1652185089212" duration="313000" />
+      <workItem from="1652261857124" duration="9480000" />
+      <workItem from="1652290981559" duration="7657000" />
+      <workItem from="1652374029608" duration="624000" />
+      <workItem from="1652375076669" duration="2473000" />
+      <workItem from="1652377723526" duration="4413000" />
+      <workItem from="1652454326720" duration="2074000" />
+      <workItem from="1652464104938" duration="12201000" />
+      <workItem from="1652507322812" duration="22477000" />
+      <workItem from="1652616597902" duration="9152000" />
+      <workItem from="1652649531087" duration="1887000" />
+      <workItem from="1652683288588" duration="7815000" />
+      <workItem from="1652705555219" duration="26056000" />
+      <workItem from="1652898025183" duration="2262000" />
+      <workItem from="1653003283002" duration="12279000" />
+      <workItem from="1653062877579" duration="3498000" />
+      <workItem from="1653113389271" duration="3192000" />
+      <workItem from="1653204486241" duration="268000" />
+      <workItem from="1653213149994" duration="43000" />
+      <workItem from="1653215803302" duration="1193000" />
+      <workItem from="1653239102647" duration="7000" />
+      <workItem from="1653302003595" duration="312000" />
+      <workItem from="1653309000629" duration="12000" />
+      <workItem from="1653309627934" duration="10357000" />
+      <workItem from="1653399842365" duration="6814000" />
+      <workItem from="1653464172787" duration="20216000" />
+      <workItem from="1653751318252" duration="1750000" />
+      <workItem from="1653808783604" duration="5343000" />
+      <workItem from="1653839255707" duration="16229000" />
+      <workItem from="1653908493171" duration="1322000" />
+      <workItem from="1654174852901" duration="3929000" />
+      <workItem from="1654269861948" duration="1347000" />
+      <workItem from="1654329222439" duration="3205000" />
+      <workItem from="1654424381713" duration="2680000" />
+      <workItem from="1655034216595" duration="3617000" />
+      <workItem from="1655054316999" duration="1809000" />
+      <workItem from="1655127560064" duration="8600000" />
+      <workItem from="1655160318181" duration="7315000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Udv$register_user.coverage" NAME="register_user Coverage Results" MODIFIED="1654175867499" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/udv_store/api/utils" />
+    <SUITE FILE_PATH="coverage/Udv$table_parser.coverage" NAME="table_parser Coverage Results" MODIFIED="1653510560582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/udv_store/api/utils" />
+  </component>
+</project>
