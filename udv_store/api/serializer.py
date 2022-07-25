@@ -2,8 +2,8 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from rest_framework.renderers import JSONRenderer
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from .models import UserInfo, Activity, UcoinRequest, Present, BalanceHistory
-from .store_models import ProductItem, Product, Order
+from .models import UserInfo, Activity, UcoinRequest, Present, BalanceHistory, Customer
+from .store_models import ProductItem, Product, Order, Cart
 
 
 # Add to jwt role field
@@ -98,11 +98,11 @@ class PresentSerializer(serializers.ModelSerializer):
 #     product_price = ...
 #     product_photo = ...
 
-#
-# class CartSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Cart
-#         fields = "__all__"
+
+class CartSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cart
+        fields = ("id", "product_item_id")
 
 
 # Serializer to create new order or order page info
@@ -128,10 +128,62 @@ class CustomOrdersSerializer(serializers.Serializer):
     office_address = serializers.CharField(max_length=2)
 
 
-class CustomUcoinsRequestsSerializer(serializers.Serializer):
-    request_id = serializers.IntegerField()
-    user_id = serializers.IntegerField()
-    activity_id = serializers.IntegerField()
-    user_name = serializers.CharField()
-    activity_name = serializers.CharField()
-    comment = serializers.CharField(max_length=250)
+class RequestListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UcoinRequest
+        fields = ("request_id", "created_date", "state", "activity_ucoins_count")
+
+
+class RequestListFullDataSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UcoinRequest
+        fields = "request_id", "comment", "created_date", "user_id", \
+                 "user_full_name", "activity_id", "activity_name"
+
+
+# Present info to generate present in frontend
+class PresentListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Present
+        fields = ("id", "user_from", "sender_full_name", "text", "sign",
+                  "ucoin_count", "background", "state")
+
+
+# Product info to store
+class ProductInStoreSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ("product_id", "name", "price", "items_list")
+
+
+# Product info to admin panel
+class ProductInAdminSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ("product_id", "name", "photo_path", "state",
+                  "description", "price", "item_count")
+
+
+class ProductInProductPageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ("product_id", "name", "price", "description",
+                  "have_size", "product_items_and_sizes")
+
+
+class CustomerCartItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Customer
+        fields = ["cart_items"]
+
+
+class ProductItemInAdminSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ("items_list", )
+
+
+class CustomerCartProductInfoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Customer
+        fields = ['product_cart_info']

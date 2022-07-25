@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import UserInfo, Activity
-from .store_models import Product, ProductItem
+from .models import UserInfo, Activity, UcoinRequest
+from .store_models import Product, ProductItem, ProductPhoto, Order
 
 
 # Register your models here.
@@ -29,13 +29,18 @@ class ProductItemAdmin(admin.ModelAdmin):
 # class CartsAdmin(admin.ModelAdmin):
 #     list_display = ('user_id', 'product_id', 'count')
 
-# @admin.register(UcoinRequest)
-# class UcoinsRequestsAdmin(admin.ModelAdmin):
-#     list_display = ('user_id', 'activity_id', 'created_date')
-#     sortable_by = ['-created_date']
+@admin.register(UcoinRequest)
+class UcoinsRequestsAdmin(admin.ModelAdmin):
+    list_display = ('user_id', 'activity_id', 'created_date')
+    sortable_by = ['-created_date']
 #
 #
-# @admin.register(Order)
-# class OrdersAdmin(admin.ModelAdmin):
-#     list_display = ('user_id', 'created_date', 'office_address')
+@admin.register(Order)
+class OrdersAdmin(admin.ModelAdmin):
+    list_display = ('user_id', 'created_date', 'office_address')
+
+
+@admin.register(ProductPhoto)
+class ProductPhotoAdmin(admin.ModelAdmin):
+    list_display = ('id', 'product_item', 'photo', 'main_photo', 'created_date')
 

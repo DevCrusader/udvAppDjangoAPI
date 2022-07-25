@@ -1,20 +1,19 @@
 from rest_framework.decorators import api_view, permission_classes, parser_classes
 from rest_framework.parsers import JSONParser, MultiPartParser, FormParser
-from rest_framework.renderers import JSONRenderer
+# from rest_framework.renderers import JSONRenderer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.views import TokenObtainPairView
 from django.db.models import Q
-import io
+# import io
 
 from .models import Activity, UcoinRequest, Present, BalanceHistory, UserInfo
 from django.contrib.auth.models import User
 from .serializer import UserInfoSerializer, MyTokenObtainPairSerializer, PublicUserInfoSerializer, \
-    ActivityListSerializer, UcoinRequestSerializer, ProductsSerializer, OrderSerializer, \
-    UcoinRequestListSerializer, OrderListSerializer, PresentSerializer, \
-    CustomOrdersSerializer, CustomUcoinsRequestsSerializer, BalanceHistorySerializer, \
-    ActivitySerializer
+    ActivityListSerializer, UcoinRequestSerializer, ProductsSerializer, PresentSerializer, \
+    BalanceHistorySerializer, \
+    ActivitySerializer, RequestListSerializer, RequestListFullDataSerializer, PresentListSerializer
 
 
 class MyTokenObtainPairView(TokenObtainPairView):
@@ -30,21 +29,16 @@ def get_user_info(request):
 
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
-def get_user_requests_latest(request):
+def get_request_latest(request):
     user = request.user
-
-    return Response([
-        request.get_info_to_list() for request in user.ucoinrequest_set.all()[:3]
-    ])
+    return Response(RequestListSerializer(user.ucoinrequest_set.all()[:3], many=True).data)
 
 
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
-def get_user_requests_full(request):
+def get_requests_full(request):
     user = request.user
-    return Response([
-        request.get_info_to_list() for request in user.ucoinrequest_set.all()
-    ])
+    return Response(RequestListSerializer(user.ucoinrequest_set.all(), many=True).data)
 
 
 @api_view(["GET"])
@@ -100,12 +94,8 @@ class BalanceAPIView(APIView):
 
 
 @api_view(["GET"])
-def get_requests(request):
-    serializer = CustomUcoinsRequestsSerializer(
-        [item.get_full_data() for item in UcoinRequest.objects.filter(state="IR")],
-        many=True
-    )
-    return Response(serializer.data)
+def get_requests_in_progress(request):
+    return Response(RequestListFullDataSerializer(UcoinRequest.objects.filter(state="IR"), many=True).data)
 
 
 @api_view(["POST", "DELETE"])
@@ -177,17 +167,23 @@ def get_unread_present_count(request):
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def get_unread_present_list(request):
-    unread_presents = request.user.present_set.filter(state="SN")
-
-    return Response([present.get_present_info() for present in unread_presents])
+    return Response(
+        PresentListSerializer(
+            request.user.present_set.filter(state="SN"),
+            many=True)
+        .data
+    )
 
 
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def get_present_list(request):
-    presents = request.user.present_set.all()
-
-    return Response([present.get_present_info() for present in presents])
+    return Response(
+        PresentListSerializer(
+            request.user.present_set.all(),
+            many=True)
+        .data
+    )
 
 
 @api_view(["GET", "POST"])
@@ -196,11 +192,11 @@ def manage_present_by_pk(request, pk):
     present = Present.objects.get(id=pk)
 
     if request.method == "GET":
-        return Response(present.get_present_info())
+        return Response(ProductsSerializer(present, many=False).data)
 
     if request.method == "POST":
         present.set_state_read()
-        return Response({"message": "Successfully!"})
+        return Response(status=200)
 
 
 @api_view(["POST"])

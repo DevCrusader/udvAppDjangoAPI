@@ -5,12 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="37471f95-e1d6-48f4-8e85-01af7dbb0182" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/210fe86e-53dd-4efd-a940-cbf88c94a6ee.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/210fe86e-53dd-4efd-a940-cbf88c94a6ee.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/udv_store/api/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/api/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/udv_store/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/api/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/udv_store/api/serializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/api/serializer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/udv_store/api/store_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/api/store_models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/udv_store/api/store_views.py" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/api/store_views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/udv_store/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/api/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/udv_store/api/utils/register_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/api/utils/register_user.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/udv_store/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/api/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/udv_store/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/udv_store/media/images/defaultProductPhotos/блокнот2.png" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/media/images/defaultProductPhotos/блокнот2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/udv_store/media/images/defaultProductPhotos/повербанк.png" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/media/images/defaultProductPhotos/повербанк.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/udv_store/media/images/defaultProductPhotos/рюкзак.png" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/media/images/defaultProductPhotos/рюкзак.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/udv_store/media/images/defaultProductPhotos/худак.png" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/media/images/defaultProductPhotos/худак.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/udv_store/media/images/productItemPhotos/блокнот2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/udv_store/media/images/productItemPhotos/рюкзак.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/udv_store/media/images/productItemPhotos/худак.png" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/media/images/productItemPhotos/худак.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/udv_store/media/tables/Пользователи из загруженных таблиц.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/media/tables/Пользователи из загруженных таблиц.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,26 +54,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/artyom/myProjects/pythonProjects/Udv/udv_store/storage/tables",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "ts.external.directory.path": "/snap/pycharm-professional/280/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/artyom/myProjects/pythonProjects/Udv/udv_store/storage/tables&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/snap/pycharm-professional/280/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/udv_store/storage/tables" />
@@ -122,8 +135,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.register_user" />
         <item itemvalue="Python.table_parser" />
+        <item itemvalue="Python.register_user" />
       </list>
     </recent_temporary>
   </component>
@@ -189,6 +202,33 @@
       <workItem from="1655337179173" duration="5215000" />
       <workItem from="1655357329620" duration="459000" />
       <workItem from="1655360278221" duration="1395000" />
+      <workItem from="1656242432974" duration="4153000" />
+      <workItem from="1656252257943" duration="298000" />
+      <workItem from="1656252571453" duration="203000" />
+      <workItem from="1656252788319" duration="3986000" />
+      <workItem from="1656326740294" duration="3577000" />
+      <workItem from="1656330550708" duration="1070000" />
+      <workItem from="1656332844631" duration="2408000" />
+      <workItem from="1657008545554" duration="2872000" />
+      <workItem from="1657544018134" duration="1751000" />
+      <workItem from="1657705768229" duration="50000" />
+      <workItem from="1657877624768" duration="4552000" />
+      <workItem from="1657962072250" duration="1431000" />
+      <workItem from="1658085475496" duration="599000" />
+      <workItem from="1658116931731" duration="1278000" />
+      <workItem from="1658118395916" duration="9170000" />
+      <workItem from="1658218307174" duration="5860000" />
+      <workItem from="1658259861925" duration="5557000" />
+      <workItem from="1658293650470" duration="599000" />
+      <workItem from="1658386702897" duration="5054000" />
+      <workItem from="1658399703650" duration="6122000" />
+      <workItem from="1658432808303" duration="3217000" />
+      <workItem from="1658514440502" duration="4494000" />
+      <workItem from="1658580668708" duration="600000" />
+      <workItem from="1658649708665" duration="6205000" />
+      <workItem from="1658703728938" duration="599000" />
+      <workItem from="1658737792669" duration="5178000" />
+      <workItem from="1658748788391" duration="148000" />
     </task>
     <servers />
   </component>

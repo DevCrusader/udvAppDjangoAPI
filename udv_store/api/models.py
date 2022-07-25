@@ -1,5 +1,37 @@
 from django.db import models
 from django.contrib.auth.models import User
+from itertools import groupby
+
+
+class Customer(User):
+    def clear_cart(self):
+        [c.delete() for c in self.cart_set.all()]
+
+    def cart_items(self):
+        return {
+            c.id: c.item_info() for c in self.cart_set.all()
+        }
+
+    def product_cart_info(self):
+        return {
+            product.product_id: {
+                'name': product.name,
+                'price': product.price,
+                'color': {
+                    item.color: item.photo_main() for item in items
+                }
+            }
+            for product, items in {
+                group_: set([i['product_item'] for i in iter_])
+                for group_, iter_ in groupby(
+                    [c.item_params() for c in self.cart_set.all()],
+                    lambda x: x['product']
+                )
+            }.items()
+        }
+
+    class Meta:
+        proxy = True
 
 
 class UserInfo(models.Model):
@@ -17,9 +49,6 @@ class UserInfo(models.Model):
     patronymic = models.CharField(max_length=50, null=False, blank=True, default="")
     position = models.CharField(max_length=70, null=True, blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
-
-    ava_back_color = models.CharField(max_length=7, null=False, blank=False, default="#000000")
-    ava_main_color = models.CharField(max_length=7, null=False, blank=False, default="#FDB4FF")
 
     def get_full_name(self):
         return ' '.join([str(self.first_name), str(self.last_name)])
@@ -100,24 +129,14 @@ class UcoinRequest(models.Model):
         self.state = "IR"
         self.save()
 
-    def get_info_to_list(self):
-        return {
-            "request_id": self.request_id,
-            "ucoin_count": self.activity_id.ucoins_count,
-            "date": self.created_date.date(),
-            "state": self.state
-        }
+    def activity_ucoins_count(self):
+        return self.activity_id.ucoins_count
 
-    def get_full_data(self):
-        return {
-            "request_id": self.request_id,
-            "user_id": self.user_id.id,
-            "user_name": ' '.join([self.user_id.userinfo.first_name, self.user_id.userinfo.last_name]),
-            "comment": self.comment,
-            "activity_id": self.activity_id.activity_id,
-            "activity_name": self.activity_id.name,
-            "created_date": self.created_date
-        }
+    def activity_name(self):
+        return self.activity_id.name
+
+    def user_full_name(self):
+        return self.user_id.userinfo.get_full_name()
 
 
 class Present(models.Model):
@@ -144,20 +163,8 @@ class Present(models.Model):
         verbose_name_plural = "Подарки"
         ordering = ["-created_date"]
 
-    def get_present_info(self):
-        return {
-            "id": self.id,
-            "user_from_id": self.user_from,
-            "user_from_name": User.objects.get(id=self.user_from).userinfo.get_full_name(),
-            "text": self.text,
-            "sign": self.sign,
-            "ucoin_count": self.ucoin_count,
-            "background": self.background,
-            "state": self.state,
-        }
-
-    # def get_unread_count(self, user):
-    #     return user.present_set.filter(state="SN").count()
+    def sender_full_name(self):
+        return User.objects.get(id=self.user_from).userinfo.get_full_name()
 
 
 class BalanceHistory(models.Model):
@@ -230,6 +237,6 @@ class BalanceHistory(models.Model):
 #             category = "RQ" if category_name == "Requests" else "OR" if category_name == "Orders" \
 #                 else "BL" if category_name == "Balance" else "PR" if category_name == "Presents" else ValueError()
 #
-#             cursor.execute(f"INSERT INTO {self.table_name} (category, category_id) VALUES ({category}, {category_id});")
+#           cursor.execute(f"INSERT INTO {self.table_name} (category, category_id) VALUES ({category}, {category_id});")
 #
 #         return "Successfully!"
