@@ -179,10 +179,7 @@ class Cart(models.Model):
 
     def get_order_info(self):
         return {
-            'cart_item_id': self.id,
-            "product_id": self.product_item_id.product_id.product_id,
             "name": self.product_item_id.product_id.name,
-            "price": self.product_item_id.product_id.price,
             "color": self.product_item_id.color,
             "size": self.get_size(),
             "photo": self.product_item_id.photo_main(),
@@ -225,10 +222,11 @@ class Order(models.Model):
     office_address = models.CharField(max_length=2, choices=OfficesChoice.choices, default=OfficesChoice.Lenina)
 
     class StateChoice(models.TextChoices):
-        completed = "CM", "Completed"
-        in_progress = "IR", 'In progress'
+        completed = "Completed"
+        in_progress = "In progress"
+        accepted = "Accepted"
 
-    state = models.CharField(max_length=2, choices=StateChoice.choices, default=StateChoice.in_progress, db_index=True)
+    state = models.CharField(max_length=12, choices=StateChoice.choices, default=StateChoice.accepted, db_index=True)
 
     class Meta:
         ordering = ["created_date"]
@@ -237,11 +235,11 @@ class Order(models.Model):
         verbose_name_plural = "Заказы"
 
     def set_state_completed(self):
-        self.state = "CM"
+        self.state = "Completed"
         self.save()
 
     def set_state_in_progress(self):
-        self.state = "IR"
+        self.state = "In progress"
         self.save()
 
     def get_parsed_product_list(self):
@@ -249,10 +247,13 @@ class Order(models.Model):
 
     def get_detail_info(self):
         return {
+            "id": self.id,
             "user_id": self.user_id.id,
             "user_name": self.user_id.userinfo.get_full_name(),
             "product_list": self.get_parsed_product_list(),
             "office": self.office_address,
+            "date": self.created_date,
+            "state": self.state
         }
 
     def get_info_to_orders_list_to_admin(self):

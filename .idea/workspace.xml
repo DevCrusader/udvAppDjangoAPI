@@ -6,25 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="37471f95-e1d6-48f4-8e85-01af7dbb0182" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/210fe86e-53dd-4efd-a940-cbf88c94a6ee.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/210fe86e-53dd-4efd-a940-cbf88c94a6ee.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/210fe86e-53dd-4efd-a940-cbf88c94a6ee.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/29d89293-fc0b-4432-85ec-b9c67c93cddf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/29d89293-fc0b-4432-85ec-b9c67c93cddf.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/udv_store/api/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/api/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/udv_store/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/api/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/udv_store/api/serializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/api/serializer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/udv_store/api/store_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/api/store_models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/udv_store/api/store_views.py" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/api/store_views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/udv_store/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/api/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/udv_store/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/api/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/udv_store/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/udv_store/media/images/defaultProductPhotos/блокнот2.png" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/media/images/defaultProductPhotos/блокнот2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/udv_store/media/images/defaultProductPhotos/повербанк.png" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/media/images/defaultProductPhotos/повербанк.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/udv_store/media/images/defaultProductPhotos/рюкзак.png" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/media/images/defaultProductPhotos/рюкзак.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/udv_store/media/images/defaultProductPhotos/худак.png" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/media/images/defaultProductPhotos/худак.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/udv_store/media/images/productItemPhotos/блокнот2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/udv_store/media/images/productItemPhotos/рюкзак.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/udv_store/media/images/productItemPhotos/худак.png" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/media/images/productItemPhotos/худак.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/udv_store/media/tables/Пользователи из загруженных таблиц.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/udv_store/media/tables/Пользователи из загруженных таблиц.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,7 +215,12 @@
       <workItem from="1658649708665" duration="6205000" />
       <workItem from="1658703728938" duration="599000" />
       <workItem from="1658737792669" duration="5178000" />
-      <workItem from="1658748788391" duration="148000" />
+      <workItem from="1658748788391" duration="971000" />
+      <workItem from="1658769269423" duration="683000" />
+      <workItem from="1659080103867" duration="21166000" />
+      <workItem from="1659117450697" duration="606000" />
+      <workItem from="1659254804062" duration="2472000" />
+      <workItem from="1659293375666" duration="4094000" />
     </task>
     <servers />
   </component>
@@ -247,7 +239,7 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Udv$register_user.coverage" NAME="register_user Coverage Results" MODIFIED="1654175867499" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/udv_store/api/utils" />
     <SUITE FILE_PATH="coverage/Udv$table_parser.coverage" NAME="table_parser Coverage Results" MODIFIED="1653510560582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/udv_store/api/utils" />
+    <SUITE FILE_PATH="coverage/Udv$register_user.coverage" NAME="register_user Coverage Results" MODIFIED="1654175867499" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/udv_store/api/utils" />
   </component>
 </project>

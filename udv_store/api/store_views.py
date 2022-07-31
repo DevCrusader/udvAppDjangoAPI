@@ -209,8 +209,12 @@ def test_f(request, pk=None):
 
 @api_view(["GET"])
 def get_orders_to_admin(request):
-    orders = Order.objects.filter(state="IR")
-    return Response([order.get_info_to_orders_list_to_admin() for order in orders])
+    return Response(
+        [
+            order.get_detail_info()
+            for order in Order.objects.filter(state__in=["In progress", "Accepted"])
+        ]
+    )
 
 
 @api_view(["GET"])
